@@ -6,7 +6,6 @@ SELECT 10 * 5;  -- Menghasilkan 50
 
 SELECT 10 / 5;  -- Menghasilkan 2
 
-
 -- Membuat tabel orders (bahan praktik number function)
 CREATE TABLE orders (
     id BIGINT PRIMARY KEY,
@@ -34,6 +33,14 @@ SELECT quantity, price, quantity * price AS total_price
 FROM orders;
 
 -- query matematika lanjutan
+SELECT ABS(-10);  -- Menghasilkan 10
+SELECT CEIL(4.2);  -- Menghasilkan 5
+SELECT FLOOR(4.8);  -- Menghasilkan 4
+SELECT ROUND(4.5);  -- Menghasilkan 5
+SELECT POWER(2, 3);  -- Menghasilkan 8
+SELECT SQRT(16);  -- Menghasilkan 4
+
+-- implementation matematika lanjutan
 SELECT id, customer_name, quantity, price, CEIL(price) AS ceil_price, FLOOR(price) AS floor_price
 FROM orders;
 
