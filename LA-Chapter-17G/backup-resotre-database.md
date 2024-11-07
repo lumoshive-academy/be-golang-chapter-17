@@ -9,31 +9,10 @@
 ## Langkah-Langkah
 
 ### 1. Buat Skrip Backup
-Buat skrip shell sederhana untuk melakukan backup database PostgreSQL. Misalnya, buat file bernama `backup_db.sh` di direktori `/home/username/backup/`:
+Buat skrip shell sederhana untuk melakukan backup database PostgreSQL.
 
 ```bash
-#!/bin/bash
-
-# Direktori tempat penyimpanan backup
-BACKUP_DIR="/home/username/backup"
-
-# Nama file backup dengan format timestamp
-BACKUP_FILE="$BACKUP_DIR/backup_$(date +%Y%m%d_%H%M%S).sql"
-
-# Nama database yang akan di-backup
-DB_NAME="nama_database"
-
-# Backup menggunakan pg_dump
-pg_dump -U postgres $DB_NAME > $BACKUP_FILE
-
-# Jika ingin kompresi menggunakan gzip
-# pg_dump -U postgres $DB_NAME | gzip > "$BACKUP_FILE.gz"
-
-# Menampilkan pesan sukses
-echo "Backup database $DB_NAME selesai dan disimpan di $BACKUP_FILE"
-
-# Berikan izin eksekusi pada skrip tersebut:
-chmod +x /home/username/backup/backup_db.sh
+pg_dump --host=localhost --port=5432 --dbname=postgres --username=postgres --format=plain --file=C:\Users\LumoshiveAcademy\Documents\backup_1.sql
 
 ```
 
@@ -73,5 +52,5 @@ find $BACKUP_DIR -type f -name "*.sql" -mtime +7 -exec rm {} \;
 Untuk melakukan restore database dari file backup, Anda dapat menggunakan perintah psql. Misalnya, jika Anda ingin merestore database dari file backup_1.sql, gunakan perintah berikut:
 
 ``` bash
-psql --host=localhost --port=5432 --username=postgres --dbname=postgres --file=/path/to/your/backup/backup_1.sql
+psql --host=localhost --port=5432 --username=postgres --dbname=postgres --file=C:\Users\LumoshiveAcademy\Documents\backup_1.sql
 ```
